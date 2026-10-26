@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de taxas de OTAs para pequenos hotéis</title>
+    <meta name="description" content="Descubra quanto Booking, Expedia, Airbnb e Decolar levam da sua diária e quanto desconto você pode dar na venda direta sem perder dinheiro." />
+    <meta name="theme-color" content="#0e0d0b" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e0d0b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff5a2c'/%3E%3C/svg%3E" />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <div class="cursor" aria-hidden="true"></div>
+
+    <header class="top">
+      <a class="brand" href="#top" aria-label="Início"><i></i>OTA/fee</a>
+      <nav aria-label="Principal">
+        <a href="#calculadora">Calculadora</a>
+        <a href="#equilibrio">Equilíbrio</a>
+        <a href="#preco">Preço alvo</a>
+        <a href="https://github.com/luannrpn/ota-fee-calculator" rel="noopener">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow" data-reveal>Open source · para pequenos hotéis e pousadas</p>
+        <h1 class="display" data-lines>Quanto as OTAs realmente levam da sua diária?</h1>
+        <div class="hero-foot" data-reveal>
+          <p class="lead">Compare comissões, veja o líquido por noite e descubra quanto desconto vale a pena dar na reserva direta.</p>
+          <a class="btn magnetic" href="#calculadora">Calcular agora <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <section class="calc" id="calculadora" aria-labelledby="calc-title">
+        <h2 class="section-title" id="calc-title" data-lines>Seus números</h2>
+
+        <div class="calc-grid">
+          <form class="panel inputs" autocomplete="off" onsubmit="return false">
+            <div class="field">
+              <label for="price">Diária publicada</label>
+              <div class="input-wrap"><span>R$</span><input id="price" type="number" inputmode="decimal" min="0" step="1" value="280" /></div>
+            </div>
+            <div class="field">
+              <label for="nights">Noites vendidas por mês</label>
+              <div class="input-wrap"><input id="nights" type="number" inputmode="numeric" min="0" step="1" value="180" /><span>noites</span></div>
+            </div>
+            <div class="field">
+              <label for="direct">Custo da venda direta (PIX/cartão)</label>
+              <div class="input-wrap"><input id="direct" type="number" inputmode="decimal" min="0" max="30" step="0.1" value="2.5" /><span>%</span></div>
+            </div>
+
+            <fieldset class="channels">
+              <legend>Canais e comissão</legend>
+              <div id="channel-list"></div>
+              <p class="hint">Valores de referência editáveis. Confira a comissão do seu contrato.</p>
+            </fieldset>
+          </form>
+
+          <div class="panel results" aria-live="polite">
+            <p class="label">As OTAs ficam com, por mês</p>
+            <p class="big" id="total-fee">R$ 0</p>
+            <p class="sub" id="total-fee-sub"></p>
+            <ul class="rows" id="rows"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="eq" id="equilibrio" aria-labelledby="eq-title">
+        <h2 class="section-title" id="eq-title" data-lines>Quanto de desconto no direto ainda compensa?</h2>
+        <p class="lead" data-reveal>Se o hóspede reservar direto com esse desconto, você recebe o mesmo líquido que receberia pela OTA, já descontado o custo de recebimento.</p>
+        <ul class="eq-list" id="eq-list"></ul>
+      </section>
+
+      <section class="target" id="preco" aria-labelledby="target-title">
+        <h2 class="section-title" id="target-title" data-lines>Quero receber X líquido. Quanto publico?</h2>
+        <form class="panel target-form" onsubmit="return false">
+          <div class="field">
+            <label for="target">Líquido desejado por noite</label>
+            <div class="input-wrap"><span>R$</span><input id="target" type="number" inputmode="decimal" min="0" step="1" value="240" /></div>
+          </div>
+          <ul class="target-list" id="target-list"></ul>
+        </form>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>Feito por <strong>Luann Neves</strong> · MIT · <a href="https://github.com/luannrpn/ota-fee-calculator" rel="noopener">código-fonte</a></p>
+      <p class="hint">Estimativas para apoio à decisão. Não substitui seu contrato com cada canal.</p>
+    </footer>
+  </body>
+</html>
