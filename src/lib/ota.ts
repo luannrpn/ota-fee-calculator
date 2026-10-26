@@ -85,5 +85,8 @@ export function calculate(input: Inputs): { channels: ChannelResult[]; direct: {
 export const brl = (n: number) =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(n)
 
-export const pct = (n: number) =>
+export const brlRound = (n: number) =>
+  new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(n)
+
+export const pct =(n: number) =>
   new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1 }).format(n) + '%'
